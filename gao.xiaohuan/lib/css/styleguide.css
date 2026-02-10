@@ -1,0 +1,175 @@
+/* --------------------
+   Base Styles
+--------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #1f2933;
+  background-color: #f9fafb;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --------------------
+   Header & Navigation
+--------------------- */
+
+header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.logo {
+  font-family: "Fraunces", serif;
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #111827;
+}
+
+/* --------------------
+   Hero Section
+--------------------- */
+
+.hero {
+  background: #e0f2fe;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-family: "Fraunces", serif;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 24px;
+  color: #374151;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #0ea5e9;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #0284c7;
+}
+
+/* --------------------
+   Features Section
+--------------------- */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 80px auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+/* --------------------
+   Newsletter Section
+--------------------- */
+
+.newsletter {
+  background: #111827;
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.newsletter h2 {
+  font-family: "Fraunces", serif;
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  margin-bottom: 20px;
+  color: #d1d5db;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.newsletter input {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  width: 250px;
+}
+
+.newsletter button {
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  background: #38bdf8;
+  color: #111827;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #0ea5e9;
+  color: white;
+}
+
+/* --------------------
+   Footer
+--------------------- */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
