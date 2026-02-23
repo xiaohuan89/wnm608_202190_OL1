@@ -1,0 +1,44 @@
+
+ /*  Grid System */
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap:50px;
+}
+
+.container {
+  padding: 40px;
+}
+
+.col-4 {
+  grid-column: span 4; 
+  background: lightblue;
+  padding: 40px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 25px;
+}
+
+
+ /* Flex Grid */
+
+.container {
+  padding: 40px;
+}
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+
+.col-4 {
+  flex: 0 0 calc(33.333% - 20px); 
+  background: lightseagreen;
+  padding: 40px;
+  text-align: center;
+  font-size: 24px;
+  box-sizing: border-box;
+}
