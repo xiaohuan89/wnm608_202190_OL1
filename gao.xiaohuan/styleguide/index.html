@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paws & Whiskers Pet Store CSS Styleguide</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../lib/css/styleguide.css" />
+  <link rel="stylesheet" href="../lib/css/gridsystem.css" />
+  <link rel="stylesheet" href="../css/storetheme.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="Paws and Whiskers home">
+        <span class="brand-mark">PW</span>
+        <span class="brand-copy">
+          <strong>Paws &amp; Whiskers</strong>
+          <span>Modern essentials for happy pets</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="#checkout">Checkout</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#shop">View Cart</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Curated pet care, elevated</p>
+          <h1>Thoughtful picks for dogs, cats, and the people who adore them.</h1>
+          <p class="hero-text">
+            Premium nutrition, playful enrichment, and design-forward essentials selected to make daily pet care feel simple and joyful.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#shop">Shop Best Sellers</a>
+            <a class="btn btn-secondary" href="#about">Why Pet Parents Choose Us</a>
+          </div>
+
+          <div class="hero-metrics" aria-label="Store highlights">
+            <div>
+              <strong>5k+</strong>
+              <span>orders fulfilled</span>
+            </div>
+            <div>
+              <strong>24 hrs</strong>
+              <span>dispatch on essentials</span>
+            </div>
+            <div>
+              <strong>4.9/5</strong>
+              <span>average customer rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-art">
+                <img src="../img/window image.png" alt="Window Image">
+            <div class="art-badge badge-top">Vet-informed picks</div>
+            <div class="art-panel panel-main">
+              <span class="pet-icon">🐶</span>
+              <div>
+                <p>Daily Wellness Box</p>
+                <strong>Food, treats, and calming care in one subscription.</strong>
+              </div>
+            </div>
+            <div class="art-panel panel-side">
+              </div>
+            </div>
+            <div class="art-badge badge-bottom">Free shipping over $50</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Key selling points">
+      <div class="container trust-grid">
+        <div>Natural ingredients</div>
+        <div>Groomer-approved tools</div>
+        <div>Fast nationwide shipping</div>
+        <div>Easy returns</div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Popular categories</p>
+          <h2>Everything your pet needs, organized beautifully.</h2>
+        </div>
+
+        <div class="category-grid">
+          <article class="category-card accent-sage">
+            <p class="category-label">Nutrition</p>
+            <h3>Daily meals and functional treats</h3>
+            <p>Premium formulas for energy, digestion, and healthy coats.</p>
+          </article>
+          <article class="category-card accent-peach">
+            <p class="category-label">Play</p>
+            <h3>Smart toys that keep boredom away</h3>
+            <p>Enrichment picks designed for curious cats and active dogs.</p>
+          </article>
+          <article class="category-card accent-slate">
+            <p class="category-label">Home</p>
+            <h3>Beds, bowls, and elevated everyday gear</h3>
+            <p>Practical essentials that look great in your space.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="shop">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Featured products</p>
+            <h2>Best sellers pet parents come back for.</h2>
+          </div>
+          <a class="text-link" href="#contact">Need help choosing?</a>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <span class="product-badge">Best seller</span>
+            <figure class="product-visual">
+                 <img src="../img/grass dog food.jpg" alt="Dog Foods">
+            </figure>
+
+            <h3>Grass-Fed Dog Food</h3>
+            <p>Protein-rich dry food with probiotics and omega support.</p>
+            <div class="product-meta">
+              <strong>$85</strong>
+              <a href="#contact">View product</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <span class="product-badge">New</span>
+            <figure class="product-visual">
+                 <img src="../img/cat bed.jpg" alt="Cat Toys">
+            </figure>
+
+            <h3>Interactive Cat Toy Set</h3>
+            <p>Feather wand, puzzle ball, and crinkle toy trio for indoor cats.</p>
+            <div class="product-meta">
+              <strong>$42</strong>
+              <a href="#contact">View product</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <span class="product-badge">Top rated</span>
+            <figure class="product-visual">
+                 <img src="../img/dog bed.jpg" alt="Dog Bed">
+            </figure>
+            <h3>Orthopedic Pet Bed</h3>
+            <p>Supportive memory foam comfort with a washable cover.</p>
+            <div class="product-meta">
+              <strong>$40</strong>
+              <a href="#contact">View product</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <span class="product-badge">Editor pick</span>
+            <figure class="product-visual">
+                 <img src="../img/Stoneware Feeding Bowl.jpg" alt="Stoneware Feeding Bowl">
+            </figure>
+            <h3>Stoneware Feeding Bowl</h3>
+            <p>Durable, easy-clean bowl with a stable anti-slip base.</p>
+            <div class="product-meta">
+              <strong>$18</strong>
+              <a href="#contact">View product</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container story-grid">
+        <div class="story-card">
+          <p class="eyebrow">About the shop</p>
+          <h2>Built for pet care that feels trusted, calm, and well considered.</h2>
+          <p>
+            We created Paws &amp; Whiskers to make quality pet shopping easier. Every item is chosen for comfort, function, and the kind of reliability that earns repeat use.
+          </p>
+        </div>
+
+        <div class="story-points">
+          <article>
+            <h3>Curated with purpose</h3>
+            <p>Fewer products, better quality, and clear reasons for every recommendation.</p>
+          </article>
+          <article>
+            <h3>Support when you need it</h3>
+            <p>Friendly guidance for first-time pet parents and seasoned owners alike.</p>
+          </article>
+          <article>
+            <h3>Designed for daily life</h3>
+            <p>From feeding to playtime, our picks fit naturally into modern homes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container promo-panel">
+        <div>
+          <p class="eyebrow">Limited-time offer</p>
+          <h2>Save 15% on your first essentials order.</h2>
+        </div>
+        <a class="btn btn-primary" href="#contact">Claim Offer</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark">PW</span>
+          <span class="brand-copy">
+            <strong>Paws &amp; Whiskers</strong>
+            <span>Curated care for modern pet homes</span>
+          </span>
+        </a>
+      </div>
+
+      <div>
+        <h3>Visit</h3>
+        <p>hello@pawsandwhiskers.com</p>
+        <p>(123) 456-7890</p>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div>
+        <h3>Follow</h3>
+        <p>Instagram</p>
+        <p>Facebook</p>
+        <p>TikTok</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
