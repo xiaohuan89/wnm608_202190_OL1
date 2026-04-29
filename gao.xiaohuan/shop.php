@@ -1,77 +1,109 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["cart"])) {
+  $_SESSION["cart"] = [];
+}
+
+$cartCount = 0;
+foreach ($_SESSION["cart"] as $cartItem) {
+  $cartCount += (int)$cartItem["quantity"];
+}
+
 $products = [
   [
+    "id" => 0,
     "name" => "Grass-Fed Dog Food",
     "price" => "$85",
     "category" => "Nutrition",
     "img" => "img/grass dog food.jpg",
-    "id" => 0
+    "description" => "A premium dry food made with grass-fed ingredients to support strong muscles, healthy digestion, and everyday energy for adult dogs."
   ],
   [
+    "id" => 1,
     "name" => "Cat Toy Set",
     "price" => "$22",
     "category" => "Play",
     "img" => "img/cat toy set.jpg",
-    "id" => 1
+    "description" => "A fun bundle of soft and interactive toys designed to keep cats active, curious, and entertained throughout the day."
   ],
   [
+    "id" => 2,
     "name" => "Interactive Cat Ball",
     "price" => "$18",
     "category" => "Play",
     "img" => "img/cat ball.jpg",
-    "id" => 2
+    "description" => "A lightweight rolling toy that encourages chasing, batting, and independent play for energetic cats."
   ],
   [
+    "id" => 3,
     "name" => "Soft Cat Bed",
     "price" => "$35",
     "category" => "Home",
     "img" => "img/cat bed.jpg",
-    "id" => 3
+    "description" => "A plush and cozy bed with soft padding that gives cats a warm, secure place to nap and relax."
   ],
   [
+    "id" => 4,
     "name" => "Dog Leash",
     "price" => "$20",
     "category" => "Walk",
     "img" => "img/dog leash.jpg",
-    "id" => 4
+    "description" => "A durable everyday leash made for comfortable walks, reliable control, and easy handling."
   ],
   [
+    "id" => 5,
     "name" => "Dog Harness",
     "price" => "$28",
     "category" => "Walk",
     "img" => "img/dog harness.jpg",
-    "id" => 5
+    "description" => "A supportive harness that helps distribute pressure more evenly for safer and more comfortable walks."
   ],
   [
+    "id" => 6,
     "name" => "Orthopedic Dog Bed",
     "price" => "$40",
     "category" => "Home",
     "img" => "img/dog bed.jpg",
-    "id" => 6
+    "description" => "A supportive orthopedic bed designed to cushion joints and provide extra comfort for resting dogs."
   ],
   [
+    "id" => 7,
     "name" => "Dog Toy Pack",
     "price" => "$25",
     "category" => "Play",
     "img" => "img/dog toys.jpg",
-    "id" => 7
+    "description" => "A playful set of chew and toss toys made to keep dogs engaged, active, and mentally stimulated."
   ],
   [
+    "id" => 8,
     "name" => "Classic Pet Bed",
     "price" => "$30",
     "category" => "Home",
     "img" => "img/bed.jpg",
-    "id" => 8
+    "description" => "A simple, comfortable pet bed that fits easily into any room and gives pets a soft place to rest."
   ],
   [
+    "id" => 9,
     "name" => "Stoneware Feeding Bowl",
     "price" => "$18",
     "category" => "Feeding",
     "img" => "img/Stoneware Feeding Bowl.jpg",
-    "id" => 9
+    "description" => "A sturdy stoneware bowl with a clean modern look, ideal for serving food or water every day."
   ]
 ];
+
+$categories = [];
+
+foreach ($products as $item) {
+  if (!in_array($item["category"], $categories)) {
+    $categories[] = $item["category"];
+  }
+}
+
+sort($categories);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +126,7 @@ $products = [
 
     .shop-intro {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .shop-intro h1 {
@@ -109,6 +141,59 @@ $products = [
       margin: 0 auto;
       color: #6b7280;
       font-size: 18px;
+    }
+
+    .shop-controls {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    .controls-form {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .control-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #34425c;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .control-group input,
+    .control-group select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 0 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      color: #1f2933;
+      background: #fff;
+    }
+
+    .control-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .control-buttons .btn {
+      white-space: nowrap;
+    }
+
+    .results-count {
+      margin-top: 16px;
+      color: #6b7280;
+      font-size: 15px;
     }
 
     .shop-grid {
@@ -140,11 +225,13 @@ $products = [
 
     .product-card h3 {
       font-family: "Fraunces", serif;
-      font-size: 28px;
+      font-size: 18px;
       line-height: 1.2;
       color: #34425c;
-      min-height: 68px;
       margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .product-card .category {
@@ -168,30 +255,49 @@ $products = [
       align-self: flex-start;
     }
 
-    .logo,
-    .cart,
-    .logo a,
-    .cart a {
-      text-decoration: none;
-      color: #3c4b68;
+    .empty-results {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 36px;
+      text-align: center;
+      color: #6b7280;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      grid-column: 1 / -1;
     }
 
-    .footer a {
-      color: #555;
-      text-decoration: none;
-      display: block;
+    .empty-results h2 {
+      font-family: "Fraunces", serif;
+      color: #34425c;
       margin-bottom: 10px;
     }
 
-    .footer a:hover,
-    .nav-links a:hover,
-    .cart a:hover {
-      text-decoration: underline;
+    .cart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 7px;
+      margin-left: 8px;
+      border-radius: 999px;
+      background: #f4c542;
+      color: #34425c;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     @media (max-width: 1100px) {
       .shop-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .controls-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .control-buttons {
+        grid-column: 1 / -1;
       }
     }
 
@@ -206,12 +312,28 @@ $products = [
     }
 
     @media (max-width: 600px) {
-      .shop-grid {
+      .shop-grid,
+      .controls-form {
         grid-template-columns: 1fr;
+      }
+
+      .shop-intro h1 {
+        font-size: 34px;
+      }
+
+      .control-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .control-buttons .btn {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
+
 <body>
 
   <header class="site-header">
@@ -232,10 +354,14 @@ $products = [
         <a href="index.php#contact">Contact</a>
       </nav>
 
-      <a class="nav-cta" href="cart.php">View Cart</a>
+      <a class="nav-cta" href="cart.php">
+        View Cart
+        <?php if ($cartCount > 0): ?>
+          <span class="cart-badge"><?php echo $cartCount; ?></span>
+        <?php endif; ?>
+      </a>
     </div>
   </header>
-
 
   <main class="shop-page">
     <div class="container">
@@ -244,21 +370,86 @@ $products = [
         <p>Premium food, toys, beds, and essentials for dogs and cats.</p>
       </section>
 
+      <section class="shop-controls">
+        <form class="controls-form">
+          <div class="control-group">
+            <label for="search">Search Products</label>
+            <input
+              type="search"
+              id="search"
+              name="search"
+              placeholder="Search food, toys, beds..."
+            >
+          </div>
+
+          <div class="control-group">
+            <label for="category">Filter by Category</label>
+            <select id="category" name="category">
+              <option value="all">All Categories</option>
+              <?php foreach ($categories as $cat): ?>
+                <option value="<?php echo htmlspecialchars($cat); ?>">
+                  <?php echo htmlspecialchars($cat); ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="sort">Sort Products</label>
+            <select id="sort" name="sort">
+              <option value="default">Default</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name-az">Name: A to Z</option>
+              <option value="name-za">Name: Z to A</option>
+            </select>
+          </div>
+
+          <div class="control-buttons">
+            <button type="submit" class="btn primary">Apply</button>
+            <a href="shop.php" class="btn secondary">Reset</a>
+          </div>
+        </form>
+
+        <p class="results-count">
+          Showing <?php echo count($products); ?> of <?php echo count($products); ?> products
+        </p>
+      </section>
+
       <section class="shop-grid">
         <?php foreach ($products as $item): ?>
-          <article class="product-card">
-            <img src="<?php echo $item['img']; ?>" alt="<?php echo $item['name']; ?>">
-            <h3><?php echo $item['name']; ?></h3>
-            <p class="category"><?php echo $item['category']; ?></p>
-            <p class="price"><?php echo $item['price']; ?></p>
-            <a href="product.php?id=<?php echo $item['id']; ?>" class="btn secondary">View Product</a>
+          <article 
+            class="product-card"
+            data-name="<?php echo htmlspecialchars($item["name"]); ?>"
+            data-category="<?php echo htmlspecialchars($item["category"]); ?>"
+            data-price="<?php echo htmlspecialchars(str_replace(["$", ","], "", $item["price"])); ?>"
+            data-description="<?php echo htmlspecialchars($item["description"]); ?>"
+          >
+            <img 
+              src="<?php echo htmlspecialchars($item["img"]); ?>" 
+              alt="<?php echo htmlspecialchars($item["name"]); ?>"
+            >
+
+            <h3><?php echo htmlspecialchars($item["name"]); ?></h3>
+
+            <p class="category">
+              <?php echo htmlspecialchars($item["category"]); ?>
+            </p>
+
+            <p class="price">
+              <?php echo htmlspecialchars($item["price"]); ?>
+            </p>
+
+            <a href="product.php?id=<?php echo (int)$item["id"]; ?>" class="btn secondary">
+              View Product
+            </a>
           </article>
         <?php endforeach; ?>
       </section>
     </div>
   </main>
 
-   <footer class="site-footer" id="contact">
+  <footer class="site-footer" id="contact">
     <div class="container footer-grid">
       <div>
         <a class="brand footer-brand" href="index.php#top">
@@ -292,6 +483,6 @@ $products = [
     </div>
   </footer>
 
-
+  <script src="js/product_list.js"></script>
 </body>
 </html>

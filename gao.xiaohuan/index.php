@@ -26,7 +26,7 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary">
-        <a href="index.php#shop">Shop</a>
+        <a href="shop.php#shop">Shop</a>
         <a href="index.php#categories">Categories</a>
         <a href="index.php#about">About</a>
         <a href="checkout.php">Checkout</a>
