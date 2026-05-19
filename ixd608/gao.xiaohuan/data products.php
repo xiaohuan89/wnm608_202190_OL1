@@ -1,16 +1,23 @@
 <?php
 $products = [
   [
-    "id" => 0,
-    "name" => "Grass-Fed Dog Food",
-    "price" => 85.00,
-    "category" => "Nutrition",
-    "img" => "img/grass dog food.jpg",
-    "description" => "A premium dry food made with grass-fed ingredients to support strong muscles, healthy digestion, and everyday energy for adult dogs.",
-    "options" => [
-      "size" => ["4 lb", "12 lb", "24 lb"]
-    ]
+  "id" => 0,
+  "name" => "Grass-Fed Dog Food",
+  "price" => 85.00,
+  "category" => "Nutrition",
+  "img" => "img/grass dog food.jpg",
+  "description" => "A premium dry food made with grass-fed ingredients to support strong muscles, healthy digestion, and everyday energy for adult dogs.",
+  "options" => [
+    "size" => ["4 lb", "12 lb", "24 lb"]
   ],
+  "option_prices" => [
+    "size" => [
+      "4 lb" => 85.00,
+      "12 lb" => 145.00,
+      "24 lb" => 220.00
+    ]
+  ]
+],
   [
     "id" => 1,
     "name" => "Cat Toy Set",
