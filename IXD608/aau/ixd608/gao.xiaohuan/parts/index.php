@@ -6,6 +6,6 @@
   <title>Paws & Whiskers Pet Store CSS Styleguide</title>
 </head>
 <body>
-	<?php phpinfo();?>
+  <?php phpinfo();?>
 </body>
 </html>
